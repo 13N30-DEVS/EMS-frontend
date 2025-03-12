@@ -3,6 +3,7 @@ import SummaryCard from './SummaryCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL;
 const AdminSummary = () => {
 
   const [summary, setSummary] = useState(null)
@@ -10,7 +11,7 @@ const AdminSummary = () => {
   useEffect(() => {
     const fetchSummary = async () => {
       try {
-        const summary = await axios.get('http://localhost:3001/api/dashboard/summary', {
+        const summary = await axios.get(`${API_URL}/dashboard/summary`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
           }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const columns = [
     {
@@ -41,7 +42,7 @@ export const columns = [
 
         try {
             const encodedEmployeeId = encodeURIComponent(employeeId);  // This will encode the `/` character
-            const response = await axios.put(`http://localhost:3001/api/attendance/update/${encodedEmployeeId}`, { status }, {
+            const response = await axios.put(`${API_URL}/attendance/update/${encodedEmployeeId}`, { status }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },

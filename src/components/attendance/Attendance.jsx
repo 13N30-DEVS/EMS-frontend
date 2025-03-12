@@ -4,6 +4,8 @@ import { columns, AttendanceHelper } from '../../utils/AttendanceHelper';
 import DataTable from 'react-data-table-component';
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Attendance = ({ refreshReport }) => {
     const [attendance, setAttendance] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -19,7 +21,7 @@ const Attendance = ({ refreshReport }) => {
     const fetchAttendance = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:3001/api/attendance', {
+            const response = await axios.get(`${API_URL}/attendance`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },

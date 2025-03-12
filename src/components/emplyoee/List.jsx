@@ -4,16 +4,19 @@ import { columns, EmployeeButtons } from '../../utils/EmployeeHelper';
 import DataTable from 'react-data-table-component';
 import axios from "axios";
 
+
+const API_URL = import.meta.env.VITE_API_URL;
 const List = () => {
     const [employees, setEmployees] = useState([]);
     const [empLoading, setEmpLoading] = useState(false);
     const [filteredEmployee, SetfilteredEmployees] = useState([]);
 
     useEffect(() => {
+        
         const fetchEmployees = async () => {
             setEmpLoading(true);
             try {
-                const response = await axios.get('http://localhost:3001/api/employee', {
+                const response = await axios.get(`${API_URL}/employee`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     }
@@ -30,7 +33,7 @@ const List = () => {
                             <img 
                                 width={40} 
                                 className="rounded-full" 
-                                src={`http://localhost:3001/uploads/${emp.userId.profileImage}`}
+                                src={`${API_URL}/uploads/${emp.userId.profileImage}`}
                                 alt="User profile" 
                             />
                         ),
@@ -90,6 +93,13 @@ const List = () => {
                     columns={columns} 
                     data={filteredEmployee} 
                     pagination 
+                    paginationPerPage={5}  // Number of rows per page
+                    paginationComponentOptions={{
+                        rowsPerPageText: 'Rows per page:', 
+                        rangeSeparatorText: 'of',
+                        selectAllRowsItem: true,
+                        selectAllRowsItemText: 'All',
+                    }}
                 />
             </div>
         </div>

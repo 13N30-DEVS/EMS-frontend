@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Setting = () => {
     const navigate = useNavigate();
     const { user } = useAuth();
@@ -44,7 +46,7 @@ const Setting = () => {
             try {
                 // Send request to change password
                 const response = await axios.put(
-                    "http://localhost:3001/api/setting/change-password",
+                    `${API_URL}/setting/change-password`,
                     setting,
                     {
                         headers: {

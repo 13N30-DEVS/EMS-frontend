@@ -4,13 +4,15 @@ import { columns } from "../../utils/LeaveHelper";
 import axios from 'axios';
 import { LeaveButtons } from "../../utils/LeaveHelper";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Table = () => {
   const [leaves, setLeaves] = useState(null)
   const [filteredLeaves, setFilteredLeaves] = useState(null)
 
   const fetchLeaves = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/leave', {
+      const response = await axios.get(`${API_URL}/leave`, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
