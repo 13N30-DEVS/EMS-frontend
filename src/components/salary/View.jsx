@@ -3,6 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/authContext";
 
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 const View = () => {
     const [salaries, setSalaries] = useState(null);
     const [filteredSalaries, setFilteredSalaries] = useState(null);
@@ -12,7 +15,7 @@ const View = () => {
     
     const fetchSalaries = async () => {
        try{
-        const response = await axios.get(`http://localhost:3001/api/salary/${id}/${user.role}`,{
+        const response = await axios.get(`${API_URL}/salary/${id}/${user.role}`,{
             headers:{
              Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

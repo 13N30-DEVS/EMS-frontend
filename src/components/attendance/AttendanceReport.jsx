@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AttendanceReport = () => {
     const [report, setReport] = useState([]);  // Stores the attendance data as an array
     const [limit, setLimit] = useState(5);     // Limit to show first 5 records
@@ -18,7 +20,7 @@ const AttendanceReport = () => {
             }
 
             const response = await axios.get(
-                `http://localhost:3001/api/attendance/report?${query.toString()}`,
+                `${API_URL}/attendance/report?${query.toString()}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,

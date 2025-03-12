@@ -4,7 +4,7 @@ import {fetchDepartments} from '../../utils/EmployeeHelper'
 import {useNavigate, useParams} from 'react-router-dom'
 import {getEmployees} from '../../utils/EmployeeHelper'
 
-
+const API_URL = import.meta.env.VITE_API_URL;
 const Add = () => {
     const [salary, setSalary] = useState({
         employeeId:'null',
@@ -45,7 +45,7 @@ const handleSubmit = async(e) =>{
     e.preventDefault()
 
     try {
-        const response = await axios.post(`http://localhost:3001/api/salary/add`, salary, {
+        const response = await axios.post(`${API_URL}/salary/add`, salary, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }

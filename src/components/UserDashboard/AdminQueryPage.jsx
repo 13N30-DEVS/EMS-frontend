@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AdminQueryPage = () => {
   const [queries, setQueries] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +19,7 @@ const AdminQueryPage = () => {
       }
 
       // Include the token in the Authorization header
-      const response = await axios.get('http://localhost:3001/api/query/all', {
+      const response = await axios.get(`${API_URL}/query/all`, {
         headers: {
           'Authorization': `Bearer ${token}`  // Add the token in Authorization header
         }

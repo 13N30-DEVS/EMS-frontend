@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const columns = [
     {
@@ -44,7 +44,7 @@ export const fetchDepartments = async () => {
     let departments
 
     try {
-        const response = await axios.get('http://localhost:3001/api/department', {
+        const response = await axios.get(`${API_URL}/department`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }
@@ -69,7 +69,7 @@ export const getEmployees = async (id) => {
     let employees
 
     try {
-        const response = await axios.get(`http://localhost:3001/api/employee/department/${id}`, {
+        const response = await axios.get(`${API_URL}/employee/department/${id}`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }

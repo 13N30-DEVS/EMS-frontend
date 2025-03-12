@@ -3,6 +3,7 @@ import { fetchDepartments } from '../../utils/EmployeeHelper'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
 
+const API_URL = import.meta.env.VITE_API_URL;
 const Add = () => {
     const [departments, setDepartments] = useState([])
     const [fromData, setFormData] = useState({})
@@ -33,7 +34,7 @@ const Add = () => {
             formDataObj.append(Key, fromData[Key])
         })
         try {
-            const response = await axios.post('http://localhost:3001/api/employee/add', formDataObj, {
+            const response = await axios.post(`${API_URL}/employee/add`, formDataObj, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const columns = [
     {
@@ -25,7 +26,7 @@ export const DepartmentButtons = ({ Id, onDepartmentDelete }) => {
         if (confrim) {
             try {
 
-                const response = await axios.delete(`http://localhost:3001/api/department/${id}`, {
+                const response = await axios.delete(`${API_URL}/department/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     }
