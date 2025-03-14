@@ -46,7 +46,7 @@ export const columns = [
     {
         name: 'Action',
         selector: (row) => <LeaveButtons Id={row._id} />,
-        center: true,
+        center: "true",
     }
 ];
 

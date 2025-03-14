@@ -10,6 +10,12 @@ export const columns = [
         width: "70px"
     },
     {
+        name: 'Emp ID',
+        selector: (row) => row.employeeId,
+        width: "120px",
+
+    },
+    {
         name: 'Name',
         selector: (row) => row.name,
         sortable: true,

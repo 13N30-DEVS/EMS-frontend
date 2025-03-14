@@ -149,12 +149,40 @@ const Add = () => {
                             <option value='employee'>Employee</option>
                         </select>
                     </div>
+                    <div>
+    <label className="block text-sm font-medium text-gray-700">
+        Phone Number 
+    </label>
+    <input
+        type="text"
+        name="phone"
+        placeholder="Enter phone number"
+        onChange={handleChange}
+        className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+    />
+</div>
+
+<div>
+    <label className="block text-sm font-medium text-gray-700">
+        Current Location
+    </label>
+    <input
+        type="text"
+        name="place"
+        placeholder="Enter your current location"
+        onChange={handleChange}
+        className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+    />
+</div>
+
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Upload Image</label>
+                        <label className="block text-sm font-medium text-gray-700">Upload Image
+                        <span className="text-gray-500">(Optional)</span>
+                        </label>
                         <input type="file" name="image" accept="image/*" onChange={handleChange}
                             className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                            required />
+                           />
                     </div>
                 </div>
 
